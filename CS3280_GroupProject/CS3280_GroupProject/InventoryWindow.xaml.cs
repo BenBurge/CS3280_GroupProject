@@ -24,14 +24,17 @@ namespace CS3280_GroupProject
     {
         // Create an instance of the class
         private ClsQuery invQueryManager;
+        private InvoiceManager inVoManager;
+            
 
         /// <summary>
-        /// 
+        /// Initialize window and constructor for clsquery
         /// </summary>
         public InventoryWindow()
         {
             InitializeComponent();
             invQueryManager = new ClsQuery();
+            inVoManager  = new InvoiceManager();
         }
 
         /// <summary>
@@ -81,7 +84,10 @@ namespace CS3280_GroupProject
         /// <param name="e"></param>
         private void btnCLearForm_Click(object sender, RoutedEventArgs e)
         {
-
+            txtItemDesc.Text = "";
+            txtItemCode.Text = "";
+            txtItemCost.Text = "";
+            cmbGetItemCode.Items.Clear();
         }
 
         /// <summary>
@@ -91,7 +97,32 @@ namespace CS3280_GroupProject
         /// <param name="e"></param>
         private void btnCloseMenu_Click(object sender, RoutedEventArgs e)
         {
+            this.Close();
+        }
 
+        private void cmbGetItemCode_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                //Make a new list
+                List<String> items = new List<String>();
+                int iRet = 0;
+                //Send query
+                DataSet ds = inVoManager.ExecuteSQLStatement(ClsQuery.getAllFromItemsDesc(), ref iRet);
+
+                //Populate list
+                foreach (DataRow dr in ds.Tables[0].Rows)
+                {
+                    items.Add(dr[0].ToString());
+                }
+
+                //Return list
+                cmbGetItemCode.ItemsSource = items;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

@@ -19,7 +19,7 @@
         <Button x:Name="btnCloseMenu" Content="Close Menu" HorizontalAlignment="Left" Margin="22,445,0,0" VerticalAlignment="Top" Width="162" Click="btnCloseMenu_Click" Grid.ColumnSpan="2"/>
 
         <DataGrid x:Name="Query_Data" HorizontalAlignment="Left" Height="425" Margin="243,40,0,0" VerticalAlignment="Top" Width="384" Grid.ColumnSpan="4"/>
-        <ComboBox x:Name="cmbGetItemCode" HorizontalAlignment="Left" Margin="23,42,0,0" VerticalAlignment="Top" Width="191" RenderTransformOrigin="-0.083,-0.458" Grid.ColumnSpan="2" Height="22">
+        <ComboBox x:Name="cmbGetItemCode" HorizontalAlignment="Left" Margin="23,42,0,0" VerticalAlignment="Top" Width="191" RenderTransformOrigin="-0.083,-0.458" Grid.ColumnSpan="2" Height="22" SelectionChanged="cmbGetItemCode_SelectionChanged">
             <ComboBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
