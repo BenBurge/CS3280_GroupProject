@@ -273,7 +273,7 @@ namespace CS3280_GroupProject
         /// <param name="sSQL"></param>
         /// <param name="iRetVal"></param>
         /// <returns></returns>
-        private DataSet ExecuteSQLStatement(string sSQL, ref int iRetVal)
+        public DataSet ExecuteSQLStatement(string sSQL, ref int iRetVal)
         {
             try
             {

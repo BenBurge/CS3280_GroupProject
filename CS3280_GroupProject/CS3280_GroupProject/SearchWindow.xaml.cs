@@ -26,6 +26,10 @@ namespace CS3280_GroupProject
         private SearchManager searchQueryManager;
         #endregion
 
+        /// <summary>
+        /// SearchManager object for sql statements
+        /// </summary>
+        SearchManager Search;
 
         /// <summary>
         /// Creates a new search window.
@@ -81,6 +85,42 @@ namespace CS3280_GroupProject
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void Filter_Number_DropDownOpened(object sender, EventArgs e)
+        {
+            //Init object
+            Search = new SearchManager();
+
+            //Fill drop down menu
+            Filter_Number.ItemsSource = Search.GetAllInvoicesView();
+
+            //Enable select button
+            Btn_Select.IsEnabled = true;
+        }
+
+        private void Filter_Date_DropDownOpened(object sender, EventArgs e)
+        {
+            //Init object
+            Search = new SearchManager();
+
+            //Fill drop down menu
+            Filter_Date.ItemsSource = Search.filterDateOptions();
+
+            //Enable select button
+            Btn_Select.IsEnabled = true;
+        }
+
+        private void Filter_Total_DropDownOpened(object sender, EventArgs e)
+        {
+            //Init object
+            Search = new SearchManager();
+
+            //Fill drop down menu
+            Filter_Total.ItemsSource = Search.filterTotalOptions();
+
+            //Enable select button
+            Btn_Select.IsEnabled = true;
         }
     }
 }

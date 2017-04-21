@@ -79,9 +79,9 @@ namespace CS3280_GroupProject
             try
             {
                 Console.WriteLine(selectedRowIndex);
-                //inManager.DeleteItemFromInvoice(lb_InvoiceID.Text.Substring(9), (selectedRowIndex + 1).ToString());
+                inManager.DeleteItemFromInvoice(lb_InvoiceID.Text.Substring(9), (selectedRowIndex + 1).ToString());
 
-                //Refresh grid
+                //// Refresh grid
                 //grid.ItemsSource = null;
                 //List<String> test = inManager.RetrieveInvoice(lb_InvoiceID.Text.Substring(9), ref invoiceDetails);
                 //lb_Total.Text = "Total $" + invoiceDetails[2].ToString();
@@ -139,7 +139,7 @@ namespace CS3280_GroupProject
         {
             this.Close();
         }
-
+        #region Method to populate drop-down and fill item code, desc, cost
         /// <summary>
         /// Fills labels and shows data for the item code selected.
         /// </summary>
@@ -156,7 +156,7 @@ namespace CS3280_GroupProject
                 DataSet ds = inVoManager.ExecuteSQLStatement(ClsQuery.getAllFromItemsDesc(), ref iRet);
 
                 //Populate list
-                foreach (DataRow dr in ds.Tables[1].Rows)
+                foreach (DataRow dr in ds.Tables[0].Rows)
                 {
                     items.Add(dr[0].ToString());
                 }
@@ -175,9 +175,8 @@ namespace CS3280_GroupProject
             try
             {
                 cm_Item.ItemsSource = inManager.populateItemList();
-
-                //Set Selected row
-                //btn_Add.IsEnabled = true;
+                // add item code, desc and txtitemcost
+                txtItemCode.Text = 
             }
             catch (Exception ex)
             {
@@ -186,5 +185,21 @@ namespace CS3280_GroupProject
             }
             //throw new NotImplementedException();
         }
+
+        private void txtItemCode_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void txtItemDesc_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void txtItemCost_Copy_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
+    #endregion
 }

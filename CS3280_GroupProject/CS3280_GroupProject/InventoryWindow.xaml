@@ -63,7 +63,7 @@
                 </RadialGradientBrush>
             </Button.Background>
         </Button>
-        <TextBox x:Name="txtItemDesc" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="22,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195">
+        <TextBox x:Name="txtItemDesc" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="22,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195" TextChanged="txtItemDesc_TextChanged">
             <TextBox.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black" Offset="1"/>
@@ -74,7 +74,7 @@
         <TextBox x:Name="txtItemCost" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="22,232,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195"/>
         <Label x:Name="lblItemDesc" Grid.ColumnSpan="2" Content="Item Description" HorizontalAlignment="Left" Margin="20,141,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.626,-0.403" Height="24" Width="112"/>
         <Label x:Name="lblCost" Grid.ColumnSpan="2" Content="Item Cost" HorizontalAlignment="Left" Margin="22,201,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtItemCost_Copy" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="22,232,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195">
+        <TextBox x:Name="txtItemCost_Copy" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="22,232,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195" TextChanged="txtItemCost_Copy_TextChanged">
             <TextBox.Background>
                 <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                     <GradientStop Color="Black" Offset="1"/>
@@ -82,7 +82,7 @@
                 </LinearGradientBrush>
             </TextBox.Background>
         </TextBox>
-        <TextBox x:Name="txtItemCode" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="22,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195">
+        <TextBox x:Name="txtItemCode" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="22,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195" TextChanged="txtItemCode_TextChanged">
             <TextBox.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black" Offset="1"/>
