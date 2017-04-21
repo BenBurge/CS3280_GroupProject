@@ -7,15 +7,51 @@
         mc:Ignorable="d"
         Title="Search Invoices" Height="504.011" Width="643.105" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Button x:Name="Btn_Clear" Content="Clear" HorizontalAlignment="Left" Margin="397,20,0,0" VerticalAlignment="Top" Width="95" Height="22" Click="Btn_Clear_Click"/>
-        <Button x:Name="Btn_Select" Content="Select Invoice" HorizontalAlignment="Left" Margin="497,20,0,0" VerticalAlignment="Top" Width="83" Height="22" Click="Btn_Select_Click" IsEnabled="False"/>
-        <ComboBox x:Name="Filter_Number" HorizontalAlignment="Left" Margin="64,20,0,0" VerticalAlignment="Top" Width="106"/>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black" Offset="1"/>
+                <GradientStop Color="White"/>
+                <GradientStop Color="#FFD4D4D4" Offset="0.15"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Button x:Name="Btn_Clear" Content="Clear" HorizontalAlignment="Left" Margin="397,20,0,0" VerticalAlignment="Top" Width="95" Height="22" Click="Btn_Clear_Click">
+            <Button.Background>
+                <RadialGradientBrush>
+                    <GradientStop Color="Black" Offset="1"/>
+                    <GradientStop Color="White" Offset="0.5"/>
+                </RadialGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button x:Name="Btn_Select" Content="Select Invoice" HorizontalAlignment="Left" Margin="497,20,0,0" VerticalAlignment="Top" Width="83" Height="22" Click="Btn_Select_Click" IsEnabled="False">
+            <Button.Background>
+                <RadialGradientBrush>
+                    <GradientStop Color="Black" Offset="1"/>
+                    <GradientStop Color="White" Offset="0.5"/>
+                </RadialGradientBrush>
+            </Button.Background>
+        </Button>
+        <ComboBox x:Name="Filter_Number" HorizontalAlignment="Left" Margin="64,20,0,0" VerticalAlignment="Top" Width="106">
+            <ComboBox.Background>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FFF0F0F0"/>
+                    <GradientStop Color="White" Offset="0.5"/>
+                </RadialGradientBrush>
+            </ComboBox.Background>
+        </ComboBox>
         <Label Content="Invoice Number" HorizontalAlignment="Left" Height="22" Margin="81,1,0,0" VerticalAlignment="Top" Width="68" FontSize="8"/>
         <ComboBox x:Name="Filter_Date" HorizontalAlignment="Left" Margin="175,20,0,0" VerticalAlignment="Top" Width="106"/>
         <Label Content="Invoice Date" HorizontalAlignment="Left" Height="22" Margin="199,1,0,0" VerticalAlignment="Top" Width="67" FontSize="8"/>
         <ComboBox x:Name="Filter_Total" HorizontalAlignment="Left" Margin="286,20,0,0" VerticalAlignment="Top" Width="106"/>
         <Label Content="Invoice Total" HorizontalAlignment="Left" Height="22" Margin="313,1,0,0" VerticalAlignment="Top" Width="68" FontSize="8"/>
-        <DataGrid x:Name="Invoice_Data" HorizontalAlignment="Left" Height="418" Margin="10,47,0,0" VerticalAlignment="Top" Width="617"/>
+        <DataGrid x:Name="Invoice_Data" HorizontalAlignment="Left" Height="418" Margin="10,47,0,0" VerticalAlignment="Top" Width="617">
+            <DataGrid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="1"/>
+                    <GradientStop Color="White"/>
+                    <GradientStop Color="#FF2F2F2F" Offset="0.85"/>
+                </LinearGradientBrush>
+            </DataGrid.Background>
+        </DataGrid>
 
     </Grid>
 </Window>
