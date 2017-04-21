@@ -7,6 +7,12 @@
         mc:Ignorable="d"
         Title="Inventory Window" Height="504.011" Width="643.105" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid RenderTransformOrigin="0.498,0.504">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black" Offset="1"/>
+                <GradientStop Color="#FFD2DAFB" Offset="0.58"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition Width="432*"/>
@@ -14,30 +20,96 @@
             <ColumnDefinition Width="433*"/>
         </Grid.ColumnDefinitions>
 
-        <Button x:Name="btnUpdate" Content="Update Item" HorizontalAlignment="Left" Margin="22,275,0,0" VerticalAlignment="Top" Width="162" Click="btnUpdate_Click_1" Grid.ColumnSpan="2"/>
-        <Button x:Name="btnAddNewItem" Content="Add New Item" HorizontalAlignment="Left" Margin="22,362,0,0" VerticalAlignment="Top" Width="162" Click="btnAddNewItem_Click" Grid.ColumnSpan="2" RenderTransformOrigin="0.49,1.167"/>
-        <Button x:Name="btnCloseMenu" Content="Close Menu" HorizontalAlignment="Left" Margin="22,445,0,0" VerticalAlignment="Top" Width="162" Click="btnCloseMenu_Click" Grid.ColumnSpan="2"/>
+        <Button x:Name="btnUpdate" Content="Update Item" HorizontalAlignment="Left" Margin="22,275,0,0" VerticalAlignment="Top" Width="162" Click="btnUpdate_Click_1" Grid.ColumnSpan="2">
+            <Button.Background>
+                <RadialGradientBrush>
+                    <GradientStop Color="Black" Offset="1"/>
+                    <GradientStop Color="White" Offset="0.5"/>
+                </RadialGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button x:Name="btnAddNewItem" Content="Add New Item" HorizontalAlignment="Left" Margin="22,362,0,0" VerticalAlignment="Top" Width="162" Click="btnAddNewItem_Click" Grid.ColumnSpan="2" RenderTransformOrigin="0.49,1.167">
+            <Button.Background>
+                <RadialGradientBrush>
+                    <GradientStop Color="Black" Offset="1"/>
+                    <GradientStop Color="White" Offset="0.5"/>
+                </RadialGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button x:Name="btnCloseMenu" Content="Close Menu" HorizontalAlignment="Left" Margin="22,445,0,0" VerticalAlignment="Top" Width="162" Click="btnCloseMenu_Click" Grid.ColumnSpan="2">
+            <Button.Background>
+                <RadialGradientBrush>
+                    <GradientStop Color="Black" Offset="1"/>
+                    <GradientStop Color="White" Offset="0.5"/>
+                </RadialGradientBrush>
+            </Button.Background>
+        </Button>
 
-        <DataGrid x:Name="Query_Data" HorizontalAlignment="Left" Height="425" Margin="243,40,0,0" VerticalAlignment="Top" Width="384" Grid.ColumnSpan="4"/>
-        <ComboBox x:Name="cmbGetItemCode" HorizontalAlignment="Left" Margin="23,42,0,0" VerticalAlignment="Top" Width="191" RenderTransformOrigin="-0.083,-0.458" Grid.ColumnSpan="2" Height="22" SelectionChanged="cmbGetItemCode_SelectionChanged">
-            <ComboBox.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-0.561"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </ComboBox.RenderTransform>
-        </ComboBox>
+        <DataGrid x:Name="Query_Data" HorizontalAlignment="Left" Height="425" Margin="243,40,0,0" VerticalAlignment="Top" Width="384" Grid.ColumnSpan="4">
+            <DataGrid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="1"/>
+                    <GradientStop Color="White"/>
+                    <GradientStop Color="#FF7E7E7E" Offset="0.85"/>
+                </LinearGradientBrush>
+            </DataGrid.Background>
+        </DataGrid>
         <Label x:Name="lblItemCode" Content="Click Dropdown for item codes" HorizontalAlignment="Left" Margin="21,9,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.033,0.08" Grid.ColumnSpan="2"/>
-        <Button x:Name="btnCLearForm" Content="CLear Form" HorizontalAlignment="Left" Margin="22,401,0,0" VerticalAlignment="Top" Width="162" Click="btnCLearForm_Click" Grid.ColumnSpan="2" RenderTransformOrigin="0.527,3.873"/>
-        <TextBox x:Name="txtItemDesc" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="22,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195"/>
+        <Button x:Name="btnCLearForm" Content="CLear Form" HorizontalAlignment="Left" Margin="22,401,0,0" VerticalAlignment="Top" Width="162" Click="btnCLearForm_Click" Grid.ColumnSpan="2" RenderTransformOrigin="0.527,3.873">
+            <Button.Background>
+                <RadialGradientBrush>
+                    <GradientStop Color="Black" Offset="1"/>
+                    <GradientStop Color="White" Offset="0.5"/>
+                </RadialGradientBrush>
+            </Button.Background>
+        </Button>
+        <TextBox x:Name="txtItemDesc" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="22,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195">
+            <TextBox.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="1"/>
+                    <GradientStop Color="#FFE8E8E8" Offset="0.5"/>
+                </LinearGradientBrush>
+            </TextBox.Background>
+        </TextBox>
         <TextBox x:Name="txtItemCost" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="22,232,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195"/>
         <Label x:Name="lblItemDesc" Grid.ColumnSpan="2" Content="Item Description" HorizontalAlignment="Left" Margin="20,141,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.626,-0.403" Height="24" Width="112"/>
         <Label x:Name="lblCost" Grid.ColumnSpan="2" Content="Item Cost" HorizontalAlignment="Left" Margin="22,201,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtItemCost_Copy" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="22,232,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195"/>
-        <TextBox x:Name="txtItemCode" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="22,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195"/>
+        <TextBox x:Name="txtItemCost_Copy" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="22,232,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195">
+            <TextBox.Background>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="1"/>
+                    <GradientStop Color="#FFE8E8E8" Offset="0.5"/>
+                </LinearGradientBrush>
+            </TextBox.Background>
+        </TextBox>
+        <TextBox x:Name="txtItemCode" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="22,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195">
+            <TextBox.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="1"/>
+                    <GradientStop Color="White" Offset="0.529"/>
+                    <GradientStop Color="#FFE8E8E8" Offset="0.5"/>
+                </LinearGradientBrush>
+            </TextBox.Background>
+        </TextBox>
         <Label x:Name="lblItemCode1" Grid.ColumnSpan="2" Content="Item Code" HorizontalAlignment="Left" Margin="20,76,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.626,-0.403" Height="24" Width="112"/>
-        <Button x:Name="btnDeleteItem" Content="Delete Item" HorizontalAlignment="Left" Margin="22,319,0,0" VerticalAlignment="Top" Width="162" Click="btnDeleteItem_Click" Grid.ColumnSpan="2"/>
+        <Button x:Name="btnDeleteItem" Content="Delete Item" HorizontalAlignment="Left" Margin="22,319,0,0" VerticalAlignment="Top" Width="162" Click="btnDeleteItem_Click" Grid.ColumnSpan="2">
+            <Button.Background>
+                <RadialGradientBrush>
+                    <GradientStop Color="Black" Offset="1"/>
+                    <GradientStop Color="White"/>
+                    <GradientStop Color="White" Offset="0.5"/>
+                </RadialGradientBrush>
+            </Button.Background>
+        </Button>
+        <ComboBox x:Name="cm_Item" Margin="22,48,85,402" Height="25" DropDownOpened="cm_Item_DropDownOpened" SelectionChanged="cm_Item_SelectionChanged" Grid.ColumnSpan="2">
+            <ComboBox.Background>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FFF0F0F0" Offset="1"/>
+                    <GradientStop Color="White"/>
+                </RadialGradientBrush>
+            </ComboBox.Background>
+        </ComboBox>
+        <TextBlock x:Name="lb_InvoiceID" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Invoice #0000" VerticalAlignment="Top" FontSize="18" Margin="243,10,0,0" Grid.ColumnSpan="4"/>
+
     </Grid>
 </Window>

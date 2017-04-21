@@ -24,8 +24,9 @@ namespace CS3280_GroupProject
     {
         // Create an instance of the class
         private ClsQuery invQueryManager;
+        private InvoiceManager inManager;
         private InvoiceManager inVoManager;
-            
+        private int selectedRowIndex;
 
         /// <summary>
         /// Initialize window and constructor for clsquery
@@ -34,7 +35,8 @@ namespace CS3280_GroupProject
         {
             InitializeComponent();
             invQueryManager = new ClsQuery();
-            inVoManager  = new InvoiceManager();
+            inVoManager = new InvoiceManager();
+            inManager = new InvoiceManager();
         }
 
         /// <summary>
@@ -43,7 +45,27 @@ namespace CS3280_GroupProject
         /// <returns></returns>
         private void btnUpdate_Click_1(object sender, RoutedEventArgs e)
         {
-            
+            try
+            {
+                if (cm_Item.SelectedItem.Equals("") || cm_Item.SelectedItem == null)
+                    return;
+                string selectedItemCode = cm_Item.SelectedItem.ToString();
+                if (!lb_InvoiceID.Equals("Invoice #0000"))
+                {
+                    string invoiceNum = lb_InvoiceID.Text.Substring(9);
+
+                    inManager.AddItemToInvoice(invoiceNum,
+                        cm_Item.SelectedItem.ToString());
+
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                Console.WriteLine(ex);
+            }
         }
 
         /// <summary>
@@ -54,7 +76,25 @@ namespace CS3280_GroupProject
         private void btnDeleteItem_Click(object sender, RoutedEventArgs e)
         {
             // Need to add/change item description and cost
-            
+            try
+            {
+                Console.WriteLine(selectedRowIndex);
+                //inManager.DeleteItemFromInvoice(lb_InvoiceID.Text.Substring(9), (selectedRowIndex + 1).ToString());
+
+                //Refresh grid
+                //grid.ItemsSource = null;
+                //List<String> test = inManager.RetrieveInvoice(lb_InvoiceID.Text.Substring(9), ref invoiceDetails);
+                //lb_Total.Text = "Total $" + invoiceDetails[2].ToString();
+                //grid.ItemsSource = test.Select(Item => new { Item });
+                //btn_Edit.IsEnabled = false;
+                //btn_DeleteItem.IsEnabled = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                Console.WriteLine(ex);
+            }
+
         }
 
 
@@ -66,7 +106,7 @@ namespace CS3280_GroupProject
             // close the current window and returns to previous
             this.Close();
         }
-        
+
         /// <summary>
         /// Adds a new item to the database
         /// </summary>
@@ -87,7 +127,7 @@ namespace CS3280_GroupProject
             txtItemDesc.Text = "";
             txtItemCode.Text = "";
             txtItemCost.Text = "";
-            cmbGetItemCode.Items.Clear();
+            cm_Item.Items.Clear();
         }
 
         /// <summary>
@@ -100,7 +140,12 @@ namespace CS3280_GroupProject
             this.Close();
         }
 
-        private void cmbGetItemCode_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        /// <summary>
+        /// Fills labels and shows data for the item code selected.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cm_Item_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
             {
@@ -111,18 +156,35 @@ namespace CS3280_GroupProject
                 DataSet ds = inVoManager.ExecuteSQLStatement(ClsQuery.getAllFromItemsDesc(), ref iRet);
 
                 //Populate list
-                foreach (DataRow dr in ds.Tables[0].Rows)
+                foreach (DataRow dr in ds.Tables[1].Rows)
                 {
                     items.Add(dr[0].ToString());
                 }
 
                 //Return list
-                cmbGetItemCode.ItemsSource = items;
+                cm_Item.ItemsSource = items;
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
+        }
+
+        private void cm_Item_DropDownOpened(object sender, EventArgs e)
+        {
+            try
+            {
+                cm_Item.ItemsSource = inManager.populateItemList();
+
+                //Set Selected row
+                //btn_Add.IsEnabled = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                Console.WriteLine(ex);
+            }
+            //throw new NotImplementedException();
         }
     }
 }
