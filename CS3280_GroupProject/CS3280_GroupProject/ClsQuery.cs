@@ -14,9 +14,6 @@ namespace CS3280_GroupProject
         #region Class Variables
         // Connect to the database using private class string
         public static string sConnString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + Directory.GetCurrentDirectory() + "\\Invoice.mdb";
-        private static object itemCode;
-        private object itemDesc;
-        private object cost;
         #endregion
 
         #region MainWindow Queries
@@ -160,13 +157,13 @@ namespace CS3280_GroupProject
 
         public static string filterDate(string invoiceDate)
         {
-            return String.Format("SELECT * FROM INVOICES WHERE InvoiceDate = '{0}';",
+            return String.Format("SELECT * FROM INVOICES WHERE InvoiceDate = #{0}#;",
                 invoiceDate);
         }
 
         public static string filterTotal(string total)
         {
-            return String.Format("SELECT * FROM INVOICES WHERE TotalCharge = '{0}':",
+            return String.Format("SELECT * FROM INVOICES WHERE TotalCharge = {0}",
                 total);
         }
 

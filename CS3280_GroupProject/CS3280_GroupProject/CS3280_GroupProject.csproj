@@ -55,6 +55,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ClsQuery.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="InventoryWindow.xaml.cs" />
     <Compile Include="InvoiceDataSet.Designer.cs">
       <AutoGen>True</AutoGen>

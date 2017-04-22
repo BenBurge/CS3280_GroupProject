@@ -116,6 +116,8 @@ namespace CS3280_GroupProject
                     lb_InvoiceID.Text = "Invoice #" + searchedInvoiceNum.ToString();
                     lb_Total.Text = "Total $" + invoiceDetails[2];
 
+                    btn_Save.IsEnabled = true;
+
                     grid.ItemsSource = test.Select(Item => new { Item });
                 }
                 else

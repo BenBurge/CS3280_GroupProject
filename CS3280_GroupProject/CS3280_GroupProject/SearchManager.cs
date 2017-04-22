@@ -19,6 +19,7 @@ namespace CS3280_GroupProject
         /// </summary>
         public SearchManager()
         {
+
         }
 
         /// <summary>
@@ -92,6 +93,94 @@ namespace CS3280_GroupProject
                 int iRet = 0;
 
                 DataSet ds = ExecuteSQLStatement(ClsQuery.getTotalOptions(), ref iRet);
+
+                //Get query results
+                foreach (DataRow dr in ds.Tables[0].Rows)
+                {
+                    InvoiceTotal.Add(dr[0].ToString());
+                }
+
+                //return query results
+                return InvoiceTotal;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Queries the invoice database and pulls all of the invoices
+        /// </summary>
+        /// <returns></returns>
+        public List<string> GetInvoicesByInvoiceNumber(string number)
+        {
+            try
+            {
+                //Create DataSet to hold query data
+                List<string> InvoiceNum = new List<string>();
+                int iRet = 0;
+
+                DataSet ds = ExecuteSQLStatement(ClsQuery.filterInvoiceNum(number), ref iRet);
+
+                //Get query results
+                foreach (DataRow dr in ds.Tables[0].Rows)
+                {
+                    InvoiceNum.Add(dr[0].ToString());
+                }
+
+                //return query results
+                return InvoiceNum;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Queries the invoice database and pulls all of the invoices
+        /// </summary>
+        /// <returns></returns>
+        public List<string> GetInvoicesByInvoiceDate(string date)
+        {
+            try
+            {
+                //Create DataSet to hold query data
+                List<string> InvoiceDate = new List<string>();
+                int iRet = 0;
+
+                DataSet ds = ExecuteSQLStatement(ClsQuery.filterDate(date), ref iRet);
+
+                //Get query results
+                foreach (DataRow dr in ds.Tables[0].Rows)
+                {
+                    InvoiceDate.Add(dr[0].ToString());
+                }
+
+                //return query results
+                return InvoiceDate;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+
+        /// <summary>
+        /// Queries the invoice database and pulls all of the invoices
+        /// </summary>
+        /// <returns></returns>
+        public List<string> GetInvoicesByInvoiceTotal(string total)
+        {
+            try
+            {
+                //Create DataSet to hold query data
+                List<string> InvoiceTotal = new List<string>();
+                int iRet = 0;
+
+                DataSet ds = ExecuteSQLStatement(ClsQuery.filterTotal(total), ref iRet);
 
                 //Get query results
                 foreach (DataRow dr in ds.Tables[0].Rows)

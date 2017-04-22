@@ -43,9 +43,6 @@ namespace CS3280_GroupProject
             //Setup Search Query Manager
             searchQueryManager = new SearchManager();
             #endregion  
-
-            //Test Setup
-            Invoice_Data.ItemsSource = searchQueryManager.GetAllInvoicesView();
         }
 
         /// <summary>
@@ -58,12 +55,26 @@ namespace CS3280_GroupProject
             try
             {
                 //Reset datagrid
-                Invoice_Data.ItemsSource = searchQueryManager.GetAllInvoicesView();
+                Invoice_Data.ItemsSource = null;
 
                 //Reset all drop down boxes
-                Filter_Number.SelectedItem = null;
-                Filter_Date.SelectedItem = null;
-                Filter_Total.SelectedItem = null;
+                if (Filter_Number.SelectedItem != null)
+                {
+                    Filter_Number.SelectedItem = null;
+                }
+                else if (Filter_Date.SelectedItem != null)
+                {
+                    Filter_Date.SelectedItem = null;
+                }
+                else if (Filter_Total.SelectedItem != null)
+                {
+                    Filter_Total.SelectedItem = null;
+                }
+
+                //Disable other drop down menus
+                Filter_Number.IsEnabled = true;
+                Filter_Date.IsEnabled = true;
+                Filter_Total.IsEnabled = true;
             }
             catch (Exception ex)
             {
@@ -80,11 +91,10 @@ namespace CS3280_GroupProject
         {
             try
             {
-                if (SendInvoice != null)
-                {
-                    Console.WriteLine("sending invoice");
-                    SendInvoice("5000");
-                }
+                if (Invoice_Data.SelectedItem == null)
+                    return;
+                string[] data = Invoice_Data.SelectedItem.ToString().Split('=');
+                SendInvoice(data[1].Substring(1, 4));
                 this.Close();
             }
             catch (Exception ex)
@@ -93,20 +103,42 @@ namespace CS3280_GroupProject
             }
         }
 
-        private void Filter_Number_DropDownOpened_1(object sender, EventArgs e)
+        /// <summary>
+        /// Method to fill the invoice number drop down menu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Filter_Number_DropDownOpened(object sender, EventArgs e)
         {
-            //Init object
-            Search = new SearchManager();
+            try
+            {
+                //Init object
+                Search = new SearchManager();
 
-            //Fill drop down menu
-            Filter_Number.ItemsSource = Search.GetAllInvoicesView();
+                //Fill drop down menu
+                Filter_Number.ItemsSource = Search.GetAllInvoicesView();
 
-            //Enable select button
-            Btn_Select.IsEnabled = true;
+                //Disable other drop down menus
+                Filter_Date.IsEnabled = false;
+                Filter_Total.IsEnabled = false;
+
+                //Enable select button
+                Btn_Select.IsEnabled = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
-        private void Filter_Date_DropDownOpened_1(object sender, EventArgs e)
+        /// <summary>
+        /// Method to fill the invoice date drop down number
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Filter_Date_DropDownOpened(object sender, EventArgs e)
         {
+            try
             {
                 //Init object
                 Search = new SearchManager();
@@ -114,20 +146,113 @@ namespace CS3280_GroupProject
                 //Fill drop down menu
                 Filter_Date.ItemsSource = Search.filterDateOptions();
 
+                //Disable other drop down menus
+                Filter_Number.IsEnabled = false;
+                Filter_Total.IsEnabled = false;
+
                 //Enable select button
                 Btn_Select.IsEnabled = true;
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
+
+        /// <summary>
+        /// Method that fills the invoice total drop down menu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Filter_Total_DropDownOpened(object sender, EventArgs e)
         {
-            //Init object
-            Search = new SearchManager();
+            try
+            {
+                //Init object
+                Search = new SearchManager();
 
-            //Fill drop down menu
-            Filter_Total.ItemsSource = Search.filterTotalOptions();
+                //Fill drop down menu
+                Filter_Total.ItemsSource = Search.filterTotalOptions();
 
-            //Enable select button
-            Btn_Select.IsEnabled = true;
+                //Disable other drop down menus
+                Filter_Number.IsEnabled = false;
+                Filter_Date.IsEnabled = false;
+
+                //Enable select button
+                Btn_Select.IsEnabled = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// This method selects and displays the Invoice number
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Filter_Number_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                if (Filter_Number.SelectedItem != null)
+                {
+                    List<string> steve = Search.GetInvoicesByInvoiceNumber(Filter_Number.SelectedItem.ToString());
+                    Invoice_Data.ItemsSource = steve.Select(item => new { item });
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        /// <summary>
+        /// This method selects and displays the Invoice Date
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Filter_Date_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                if (Filter_Date.SelectedItem != null)
+                {
+                    List<string> joe = Search.GetInvoicesByInvoiceDate(Filter_Date.SelectedItem.ToString());
+                    Invoice_Data.ItemsSource = joe.Select(item => new { item });
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        /// <summary>
+        /// This method selects and displays the Invoice Total
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Filter_Total_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                if (Filter_Total.SelectedItem != null)
+                {
+                    List<string> george = Search.GetInvoicesByInvoiceTotal(Filter_Total.SelectedItem.ToString());
+                    Invoice_Data.ItemsSource = george.Select(item => new { item });
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void Filter(object sender, EventArgs e)
+        {
+
         }
     }
 }
