@@ -176,7 +176,7 @@ namespace CS3280_GroupProject
             {
                 cm_Item.ItemsSource = inManager.populateItemList();
                 // add item code, desc and txtitemcost
-                txtItemCode.Text = 
+                //txtItemCode.Text = 
             }
             catch (Exception ex)
             {

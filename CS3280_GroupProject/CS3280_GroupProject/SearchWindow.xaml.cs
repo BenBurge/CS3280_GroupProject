@@ -24,6 +24,7 @@ namespace CS3280_GroupProject
     {
         #region Private Class Variables
         private SearchManager searchQueryManager;
+        public event Action<string> SendInvoice;
         #endregion
 
         /// <summary>
@@ -79,7 +80,12 @@ namespace CS3280_GroupProject
         {
             try
             {
-
+                if (SendInvoice != null)
+                {
+                    Console.WriteLine("sending invoice");
+                    SendInvoice("5000");
+                }
+                this.Close();
             }
             catch (Exception ex)
             {

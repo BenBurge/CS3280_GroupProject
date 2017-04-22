@@ -19,6 +19,8 @@ namespace CS3280_GroupProject
         private string newID;
         private string invoiceDate;
         private int selectedRowIndex;
+
+        private string searchedInvoiceNum;
         #endregion
 
         /// <summary>
@@ -92,14 +94,34 @@ namespace CS3280_GroupProject
         {
             try
             {
-                //Open Search Window
+                //Enable controls
+                btn_New.IsEnabled = false;
+                btn_Edit.IsEnabled = false;
+                btn_DeleteItem.IsEnabled = false;
+                btn_Delete.IsEnabled = true;
+                btn_Add.IsEnabled = true;
+                cm_Item.IsEnabled = true;
+
                 SearchWindow sw = new SearchWindow();
-                sw.Show();
+                sw.SendInvoice += value => searchedInvoiceNum = value;
+                sw.ShowDialog();
 
-                //On Search Window close check for returned invoice
+                if(searchedInvoiceNum != null)
+                {
+                    //Show data
 
-                //If there is an invoice then load and enable editing of invoice
-                //TODO WAITING FOR GAVIN'S CODE TO BE FINISHED
+                    invoiceDetails.Clear();
+                    List<String> test = inManager.RetrieveInvoice(searchedInvoiceNum, ref invoiceDetails);
+                    btn_Date.SelectedDate = Convert.ToDateTime(invoiceDetails[0]);
+                    lb_InvoiceID.Text = "Invoice #" + searchedInvoiceNum.ToString();
+                    lb_Total.Text = "Total $" + invoiceDetails[2];
+
+                    grid.ItemsSource = test.Select(Item => new { Item });
+                }
+                else
+                {
+                    Console.WriteLine("No Invoice Returned");
+                }
             }
             catch (Exception ex)
             {
@@ -148,8 +170,9 @@ namespace CS3280_GroupProject
                         cm_Item.SelectedItem.ToString());
 
                     //Refresh grid
+                    invoiceDetails.Clear();
                     List<String> test = inManager.RetrieveInvoice(lb_InvoiceID.Text.Substring(9), ref invoiceDetails);
-                    lb_Total.Text = "Total $" + invoiceDetails[2].ToString();
+                    lb_Total.Text = "Total $" + invoiceDetails[1].ToString();
                     grid.ItemsSource = test.Select(Item => new { Item });
 
                 }

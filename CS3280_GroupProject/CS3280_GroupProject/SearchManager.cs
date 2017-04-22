@@ -19,7 +19,6 @@ namespace CS3280_GroupProject
         /// </summary>
         public SearchManager()
         {
-
         }
 
         /// <summary>

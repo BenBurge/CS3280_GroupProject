@@ -22,7 +22,7 @@
                 </RadialGradientBrush>
             </Button.Background>
         </Button>
-        <Button x:Name="Btn_Select" Content="Select Invoice" HorizontalAlignment="Left" Margin="497,20,0,0" VerticalAlignment="Top" Width="83" Height="22" Click="Btn_Select_Click" IsEnabled="False">
+        <Button x:Name="Btn_Select" Content="Select Invoice" HorizontalAlignment="Left" Margin="497,20,0,0" VerticalAlignment="Top" Width="83" Height="22" Click="Btn_Select_Click">
             <Button.Background>
                 <RadialGradientBrush>
                     <GradientStop Color="Black" Offset="1"/>
