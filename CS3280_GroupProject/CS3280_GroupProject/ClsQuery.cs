@@ -177,17 +177,17 @@ namespace CS3280_GroupProject
 
         public static string getDateOptions()
         {
-            return String.Format("SELECT InvoiceDate FROM INVOICES;");
+            return String.Format("SELECT DISTINCT InvoiceDate FROM INVOICES;");
         }
 
         public static string getTotalOptions()
         {
-            return String.Format("SELECT TotalCharge FROM INVOICES;");
+            return String.Format("SELECT DISTINCT TotalCharge FROM INVOICES;");
         }
 
         public static string getInvoiceOptions()
         {
-            return String.Format("SELECT InvoiceNum FROM INVOICE;");
+            return String.Format("SELECT DISTINCT InvoiceNum FROM INVOICES;");
         }
 
         #endregion

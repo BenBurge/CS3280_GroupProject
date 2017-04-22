@@ -87,7 +87,7 @@ namespace CS3280_GroupProject
             }
         }
 
-        private void Filter_Number_DropDownOpened(object sender, EventArgs e)
+        private void Filter_Number_DropDownOpened_1(object sender, EventArgs e)
         {
             //Init object
             Search = new SearchManager();
@@ -99,18 +99,19 @@ namespace CS3280_GroupProject
             Btn_Select.IsEnabled = true;
         }
 
-        private void Filter_Date_DropDownOpened(object sender, EventArgs e)
+        private void Filter_Date_DropDownOpened_1(object sender, EventArgs e)
         {
-            //Init object
-            Search = new SearchManager();
+            {
+                //Init object
+                Search = new SearchManager();
 
-            //Fill drop down menu
-            Filter_Date.ItemsSource = Search.filterDateOptions();
+                //Fill drop down menu
+                Filter_Date.ItemsSource = Search.filterDateOptions();
 
-            //Enable select button
-            Btn_Select.IsEnabled = true;
+                //Enable select button
+                Btn_Select.IsEnabled = true;
+            }
         }
-
         private void Filter_Total_DropDownOpened(object sender, EventArgs e)
         {
             //Init object
